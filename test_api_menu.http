@@ -1,0 +1,16 @@
+### Get all menu
+GET https://localhost:3000/api/menu
+X-API-Key: RAHASIA
+Accept: application/json
+
+### Crete new menu
+POST https://localhost:3000/api/menu
+X-API-Key: RAHASIA
+Accept: application/json
+Content-Type: application/json
+
+{
+  "categoryId": 1,
+  "menuName": "Nasi Goreng",
+  "price": 10000
+}

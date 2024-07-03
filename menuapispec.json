@@ -1,0 +1,261 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Menu RESTful API",
+    "description": "API Spec for Menu RESTful API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api"
+    }
+  ],
+  "paths": {
+    "/menu": {
+      "get": {
+        "security": [{
+          "MenuAuth" : []
+        }],
+        "tags": [
+          "Menu API"
+        ],
+        "description": "List all Menu",
+        "summary": "List all Menu",
+        "responses": {
+          "200": {
+            "description": "Success get all menu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Menu"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [{
+          "MenuAuth" : []
+        }],
+        "tags": ["Menu API"],
+        "description": "Create new Menu",
+        "summary": "Create new Menu",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateMenu"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success Create Menu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Menu"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/menu/{menuId}" : {
+      "get" : {
+        "security": [{
+          "MenuAuth" : []
+        }],
+        "tags": ["Menu API"],
+        "summary": "Get menu by Id",
+        "description": "Get menu by id",
+        "parameters": [
+          {
+            "name": "menuId",
+            "in": "path",
+            "description": "Menu Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success get menu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Menu"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "security": [{
+          "MenuAuth" : []
+        }],
+        "tags": ["Menu API"],
+        "summary": "Update menu by Id",
+        "description": "Update menu by Id",
+        "parameters": [
+          {
+            "name": "menuId",
+            "in": "path",
+            "description": "Menu Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrUpdateMenu"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200" : {
+            "description": "Success get menu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Menu"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [{
+          "MenuAuth" : []
+        }],
+        "tags": ["Menu API"],
+        "summary": "Delete menu by Id",
+        "description": "Delete menu by id",
+        "parameters": [
+          {
+            "name": "menuId",
+            "in": "path",
+            "description": "Menu Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success delete menu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "MenuAuth" : {
+        "type": "apiKey",
+        "in" : "header",
+        "name": "X-API-Key",
+        "description": "Authentication for Menu API"
+      }
+    },
+    "schemas": {
+      "CreateOrUpdateMenu" : {
+        "type": "object",
+        "properties": {
+          "category_id": {
+            "type": "number"
+          },
+          "menu_name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          }
+        }
+      },
+      "Menu" : {
+        "type": "object",
+        "properties": {
+          "menu_id": {
+            "type": "number"
+          },
+          "category_id": {
+            "type": "number"
+          },
+          "category_name": {
+            "type": "string"
+          },
+          "menu_name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
