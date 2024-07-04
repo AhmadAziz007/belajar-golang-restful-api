@@ -81,10 +81,10 @@ func (repository MenuRepositoryImpl) FindByName(ctx context.Context, tx *sql.Tx,
 }
 
 func (repository MenuRepositoryImpl) FindAll(ctx context.Context, tx *sql.Tx) ([]domain.Menu, error) {
-	SQL := `select a.menu_id, a.category_id, b.category_name, a.menu_name, a.price 
-			from menu as a 
-			inner join category as b on a.category_id = b.category_id 
-			order by a.menu_id, a.category_id, b.category_name, a.menu_name, a.price asc `
+	SQL := `SELECT a.menu_id, a.category_id, b.category_name, a.menu_name, a.price 
+			FROM menu AS a 
+			INNER JOIN category AS b ON a.category_id = b.category_id 
+			ORDER BY a.menu_id, a.category_id, b.category_name, a.menu_name, a.price ASC`
 	rows, err := tx.QueryContext(ctx, SQL)
 	helper.PanicIfError(err)
 	defer rows.Close()

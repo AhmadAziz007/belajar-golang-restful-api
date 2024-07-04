@@ -7,10 +7,11 @@ import (
 
 func ToMenuResponse(menu domain.Menu) response.MenuResponse {
 	return response.MenuResponse{
-		MenuId:     menu.MenuId,
-		CategoryId: menu.CategoryId,
-		MenuName:   menu.MenuName,
-		Price:      menu.Price,
+		MenuId:       menu.MenuId,
+		CategoryId:   menu.CategoryId,
+		CategoryName: menu.CategoryName,
+		MenuName:     menu.MenuName,
+		Price:        menu.Price,
 	}
 }
 

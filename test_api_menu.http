@@ -1,10 +1,10 @@
 ### Get all menu
-GET https://localhost:3000/api/menu
+GET http://localhost:3000/api/menu
 X-API-Key: RAHASIA
 Accept: application/json
 
 ### Crete new menu
-POST https://localhost:3000/api/menu
+POST http://localhost:3000/api/menu
 X-API-Key: RAHASIA
 Accept: application/json
 Content-Type: application/json

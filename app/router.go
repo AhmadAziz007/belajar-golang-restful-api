@@ -16,7 +16,7 @@ func NewRouter(categoryController controller.CategoryController, menuController 
 	router.DELETE("/api/categories/:categoryId", categoryController.Delete)
 
 	router.GET("/api/menu", menuController.FindAll)
-	router.POST("/api/menus", menuController.Create)
+	router.POST("/api/menu", menuController.Create)
 
 	router.PanicHandler = exception.ErrorHandler
 
