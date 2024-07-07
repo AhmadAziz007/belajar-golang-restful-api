@@ -16,7 +16,7 @@ func NewMenuRepository() repository.MenuRepository {
 }
 
 func (repository MenuRepositoryImpl) FindById(ctx context.Context, tx *sql.Tx, menuId int) (domain.Menu, error) {
-	SQL := "select menu_id, category_id, menu_name, price from menu where id=?"
+	SQL := "select menu_id, category_id, menu_name, price from menu where menu_id=?"
 	rows, err := tx.QueryContext(ctx, SQL, menuId)
 	helper.PanicIfError(err)
 	defer rows.Close()

@@ -11,6 +11,34 @@ Content-Type: application/json
 
 {
   "categoryId": 1,
-  "menuName": "Nasi Goreng",
+  "menuName": "Cumi Tumis",
   "price": 10000
 }
+
+### Get menu by createria
+GET http://localhost:3000/api/menu
+X-API-Key: RAHASIA
+Accept: application/json
+Content-Type: application/json
+
+{
+  "categoryName" : "",
+  "menuName"     : "Mie"
+}
+
+### Update new menu
+PUT http://localhost:3000/api/menu/1
+X-API-Key: RAHASIA
+Accept: application/json
+Content-Type: application/json
+
+{
+  "categoryId": 1,
+  "menuName": "Nasi Goreng Kambing",
+  "price": 10000
+}
+
+### Delete menu by
+DELETE http://localhost:3000/api/menu/3
+X-API-Key: RAHASIA
+Accept: application/json

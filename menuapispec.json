@@ -90,44 +90,6 @@
       }
     },
     "/menu/{menuId}" : {
-      "get" : {
-        "security": [{
-          "MenuAuth" : []
-        }],
-        "tags": ["Menu API"],
-        "summary": "Get menu by Id",
-        "description": "Get menu by id",
-        "parameters": [
-          {
-            "name": "menuId",
-            "in": "path",
-            "description": "Menu Id"
-          }
-        ],
-        "responses": {
-          "200" : {
-            "description": "Success get menu",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code" : {
-                      "type": "number"
-                    },
-                    "status" : {
-                      "type": "string"
-                    },
-                    "data" : {
-                      "$ref": "#/components/schemas/Menu"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
       "put" : {
         "security": [{
           "MenuAuth" : []
@@ -210,6 +172,46 @@
           }
         }
       }
+    },
+    "/menu/{categoryName}/{menuName}": {
+      "get" : {
+        "security": [{
+          "MenuAuth" : []
+        }],
+        "tags": ["Menu API"],
+        "summary": "Get menu by Id",
+        "description": "Get menu by id",
+        "parameters": [
+          {
+            "name": "menuId",
+            "in": "path",
+            "description": "Menu Id"
+          }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Success get menu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "status" : {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "$ref": "#/components/schemas/Menu"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -225,6 +227,9 @@
       "CreateOrUpdateMenu" : {
         "type": "object",
         "properties": {
+          "menu_id": {
+            "type": "number"
+          },
           "category_id": {
             "type": "number"
           },
